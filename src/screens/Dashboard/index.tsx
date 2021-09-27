@@ -11,6 +11,7 @@ import {
   UserGreetings,
   UserWrapper,
   Icon,
+  HighlightCards,
 } from './styles';
 
 export const Dashboard = ({}) => {
@@ -33,8 +34,11 @@ export const Dashboard = ({}) => {
           <Icon name='power' />
         </UserWrapper>
       </Header>
-
-      <HighlightCard />
+      <HighlightCards>
+        <HighlightCard />
+        <HighlightCard />
+        <HighlightCard />
+      </HighlightCards>
     </Container>
   );
 };
