@@ -1,19 +1,36 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Title } from './styles';
+import {
+  Container,
+  Header,
+  UserInfo,
+  Photo,
+  User,
+  UserName,
+  UserGreetings,
+  UserWrapper,
+  Icon,
+} from './styles';
 
 export const Dashboard = ({}) => {
   return (
-    <Container style={styles.container}>
-      <Title>Dashboard</Title>
+    <Container>
+      <Header>
+        <UserWrapper>
+          <UserInfo>
+            <Photo
+              source={{
+                uri: 'https://avatars.githubusercontent.com/u/55214084?v=4',
+              }}
+            />
+
+            <User>
+              <UserGreetings>Olá,</UserGreetings>
+              <UserName>Lucas</UserName>
+            </User>
+          </UserInfo>
+          <Icon name='power' />
+        </UserWrapper>
+      </Header>
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
