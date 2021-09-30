@@ -35,9 +35,24 @@ export const Dashboard = ({}) => {
         </UserWrapper>
       </Header>
       <HighlightCards>
-        <HighlightCard />
-        <HighlightCard />
-        <HighlightCard />
+        <HighlightCard
+          title='Entradas'
+          amount='17.400,00'
+          lastTransaction='Última entrada dia 13 de abril'
+          type='up'
+        />
+        <HighlightCard
+          title='Saida'
+          amount='10.400,00'
+          lastTransaction='Última Saida dia 03 de abril'
+          type='down'
+        />
+        <HighlightCard
+          title='Total'
+          amount='7.000,00'
+          lastTransaction='01 à 16 de abril'
+          type='total'
+        />
       </HighlightCards>
     </Container>
   );
