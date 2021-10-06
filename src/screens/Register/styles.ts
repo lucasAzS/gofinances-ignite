@@ -35,4 +35,7 @@ export const Fields = styled.View``;
 export const TransactionsTypes = styled.View`
   flex-direction: row;
   justify-content: space-between;
+
+  margin-top: ${RFValue(8)}px;
+  margin-bottom: ${RFValue(16)}px;
 `;

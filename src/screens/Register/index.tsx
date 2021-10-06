@@ -3,6 +3,8 @@ import React from 'react';
 import { Button } from '../../components/Form/Buttton';
 import { Input } from '../../components/Form/Input';
 import { TransactionTypeButton } from '../../components/Form/TransactionTypeButton';
+import { CategorySelect } from '../../components/Form/CategorySelect';
+
 import {
   Container,
   Header,
@@ -43,6 +45,7 @@ export const Register = () => {
               isActive={transactionType === 'down'}
             />
           </TransactionsTypes>
+          <CategorySelect title='Categoria' />
         </Fields>
         <Button title='Enviar' />
       </Form>
