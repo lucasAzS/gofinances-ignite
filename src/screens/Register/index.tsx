@@ -84,7 +84,7 @@ export const Register = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
         <Header>
-          <Title>Cadastro</Title>
+          <Title>Resumo</Title>
         </Header>
 
         <Form>
