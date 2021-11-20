@@ -2,11 +2,17 @@ import React from 'react';
 import { Alert, Keyboard, Modal, TouchableWithoutFeedback } from 'react-native';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import uuid from 'react-native-uuid';
 
 import { useForm } from 'react-hook-form';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 import { Button } from '../../components/Form/Buttton';
-import { Input } from '../../components/Form/Input';
 import { InputForm } from '../../components/Form/InputForm';
 import { TransactionTypeButton } from '../../components/Form/TransactionTypeButton';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
@@ -44,9 +50,14 @@ export const Register = () => {
     name: 'Categoria',
   });
 
+  const { navigate }: NavigationProp<ParamListBase> = useNavigation();
+
+  const dataKey = '@gofinances:transactions';
+
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -64,20 +75,41 @@ export const Register = () => {
     setCategoryModalOpen(false);
   }
 
-  function handleRegister(form: FormData) {
+  async function handleRegister(form: FormData) {
     if (!transactionType) return Alert.alert('Selecione um tipo de transação');
 
     if (category.key === 'category')
       return Alert.alert('Selecione uma categoria');
 
-    const data = {
+    const newTransaction = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
       transactionType,
       category: category.key,
+      date: new Date(),
     };
 
-    console.log(data);
+    try {
+      // the data saved on async storage must be a string
+      // dataKey is the key to access the data
+      const data = await AsyncStorage.getItem(dataKey);
+      const currentData = JSON.parse(data || '[]');
+
+      const dataToSave = [...currentData, newTransaction];
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataToSave));
+
+      reset();
+      setTransactionType('');
+      setCategory({ key: 'category', name: 'Categoria' });
+
+      console.log(dataToSave);
+
+      navigate('Listagem');
+    } catch (error) {
+      Alert.alert('Erro ao cadastrar');
+    }
   }
 
   return (
