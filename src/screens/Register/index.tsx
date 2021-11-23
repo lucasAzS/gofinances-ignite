@@ -52,8 +52,6 @@ export const Register = () => {
 
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
 
-  const dataKey = '@gofinances:transactions';
-
   const {
     handleSubmit,
     control,
@@ -93,6 +91,8 @@ export const Register = () => {
     try {
       // the data saved on async storage must be a string
       // dataKey is the key to access the data
+      const dataKey = '@gofinances:transactions';
+
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = JSON.parse(data || '[]');
 

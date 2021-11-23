@@ -5088,6 +5088,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"intl@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "intl@npm:1.2.5"
+  checksum: 54c2444ec334b4e7f501c1b988ccfdae96d62a6275a915b9c75a38fc42d611bfc7dd33447e94079b7a8fdb3fbf36b95afd13132af4bfd70e2ec4bf9c9e0935f9
+  languageName: node
+  linkType: hard
+
 "invariant@npm:^2.2.2, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
@@ -7744,6 +7751,7 @@ __metadata:
     expo-splash-screen: ~0.11.2
     expo-status-bar: ~1.0.4
     expo-updates: ~0.8.2
+    intl: ^1.2.5
     react: 16.13.1
     react-dom: 16.13.1
     react-hook-form: ^7.17.4

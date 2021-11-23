@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 
 import { HighlightCard } from '../../components/HighlightCard';
@@ -28,41 +29,47 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export const Dashboard = ({}) => {
-  const data: DataListProps[] = [
-    {
-      id: '1',
-      type: 'positive',
-      title: 'Desenvolvimento de site',
-      amount: 'R$ 12.000,00',
-      category: {
-        name: 'Vendas',
-        icon: 'dollar-sign',
-      },
-      date: '13/04/2020',
-    },
-    {
-      id: '2',
-      type: 'negative',
-      title: 'Hamburger',
-      amount: 'R$ 59,00',
-      category: {
-        name: 'Alimentação',
-        icon: 'coffee',
-      },
-      date: '10/04/2020',
-    },
-    {
-      id: '3',
-      type: 'negative',
-      title: 'Aluguel',
-      amount: 'R$ 1.000,00',
-      category: {
-        name: 'Casa',
-        icon: 'shopping-bag',
-      },
-      date: '27/03/2020',
-    },
-  ];
+  const [data, setData] = React.useState<DataListProps[]>([]);
+
+  async function loadTransactions() {
+    const dataKey = '@gofinances:transactions';
+    const response = await AsyncStorage.getItem(dataKey);
+    const transactions = JSON.parse(response || '[]');
+
+    const transactionsToSave: DataListProps[] = transactions.map(
+      (item: DataListProps) => {
+        const number = Number(item.amount);
+        let amount = new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(number);
+
+        amount = amount.replace('R$', 'R$ ');
+
+        const date = Intl.DateTimeFormat('pt-BR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit',
+        }).format(new Date(item.date));
+
+        return {
+          id: item.id,
+          name: item.name,
+          type: item.type,
+          category: item.category,
+          amount,
+          date,
+        };
+      }
+    );
+
+    setData(transactionsToSave);
+  }
+
+  React.useEffect(() => {
+    loadTransactions();
+  }, []);
+
   return (
     <Container>
       <Header>
