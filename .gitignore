@@ -53,8 +53,8 @@ buck-out/
 .expo/
 web-build/
 
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
