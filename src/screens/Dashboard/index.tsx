@@ -191,7 +191,6 @@ export const Dashboard = ({}) => {
               </LogoutButton>
             </UserWrapper>
           </Header>
-
           <HighlightCards>
             <HighlightCard
               title='Entradas'
