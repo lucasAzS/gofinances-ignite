@@ -27,6 +27,7 @@ import {
   Fields,
   TransactionsTypes,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 interface FormData {
   name: string;
@@ -44,6 +45,8 @@ const schema = Yup.object().shape({
 export const Register = () => {
   const [transactionType, setTransactionType] = React.useState('');
   const [categoryModalOpen, setCategoryModalOpen] = React.useState(false);
+
+  const { user } = useAuth();
 
   const [category, setCategory] = React.useState({
     key: 'category',
@@ -91,7 +94,7 @@ export const Register = () => {
     try {
       // the data saved on async storage must be a string
       // dataKey is the key to access the data
-      const dataKey = '@gofinances:transactions';
+      const dataKey = `@gofinances:transactions_user:${user.id}`;
 
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = JSON.parse(data || '[]');

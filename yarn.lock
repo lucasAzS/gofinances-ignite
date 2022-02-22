@@ -2519,6 +2519,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/elements@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@react-navigation/elements@npm:1.3.1"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: ">= 3.0.0"
+  checksum: 40a06dda5b3ed3db9018b0686a5ee96716c8dc1ddac8a0c2bc7375b40e51e4d6698e57884d07022b7d164d489bf3817a9394a692eee53e90bd281c2e9170de8f
+  languageName: node
+  linkType: hard
+
 "@react-navigation/native@npm:^6.0.6":
   version: 6.0.6
   resolution: "@react-navigation/native@npm:6.0.6"
@@ -2539,6 +2551,24 @@ __metadata:
   dependencies:
     nanoid: ^3.1.23
   checksum: 08a4ad5d8ee132cd3901f07a39da8bbbd9f9359f6da669b1fc8d9cf57f1422d9297dce85545e7639a4d8b679291255ceb93392ff1df474dff219644435a4c22c
+  languageName: node
+  linkType: hard
+
+"@react-navigation/stack@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "@react-navigation/stack@npm:6.1.1"
+  dependencies:
+    "@react-navigation/elements": ^1.3.1
+    color: ^3.1.3
+    warn-once: ^0.1.0
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: ">= 1.0.0"
+    react-native-safe-area-context: ">= 3.0.0"
+    react-native-screens: ">= 3.0.0"
+  checksum: 1ea42979434ab6be8ef64e8a21d015608009ccb7f9d03deadb4a11192b087f95e491a8470d39d895755c61a8883c0a535df8b702535d6d6fa0942422447cb9d9
   languageName: node
   linkType: hard
 
@@ -4880,6 +4910,15 @@ __metadata:
   dependencies:
     expo-splash-screen: ~0.11.2
   checksum: 3442db50473e0d110bbd20772ea9f182a3aa8611f37ae12c502640f8f2a2dc12977f13739b8be4432bf981cfa2e822712afcd43c83937626db35602287b22cf6
+  languageName: node
+  linkType: hard
+
+"expo-apple-authentication@npm:~3.2.1":
+  version: 3.2.1
+  resolution: "expo-apple-authentication@npm:3.2.1"
+  dependencies:
+    "@expo/config-plugins": ^3.0.0
+  checksum: 1d5645389416a19c1d943da13ed2c36483949710ad5502573c26f0ee71f90d5b3f8f71324538895867f43edd12ac29b6437d2adb7e7b4adc4f8c895500bc32fd
   languageName: node
   linkType: hard
 
@@ -8781,6 +8820,7 @@ __metadata:
     "@react-native-async-storage/async-storage": ~1.15.0
     "@react-navigation/bottom-tabs": ^6.0.9
     "@react-navigation/native": ^6.0.6
+    "@react-navigation/stack": ^6.1.1
     "@types/react": ~16.9.35
     "@types/react-native": ~0.63.2
     "@types/styled-components-react-native": ^5.1.1
@@ -8788,6 +8828,7 @@ __metadata:
     date-fns: ^2.28.0
     expo: ~42.0.1
     expo-app-loading: ^1.1.2
+    expo-apple-authentication: ~3.2.1
     expo-auth-session: ~3.3.1
     expo-font: ~9.2.1
     expo-random: ~11.2.0
